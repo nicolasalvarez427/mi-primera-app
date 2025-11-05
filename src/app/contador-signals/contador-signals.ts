@@ -1,9 +1,10 @@
 import { Component, signal, input, output, computed, effect } from '@angular/core';
+import { CommonModule } from '@angular/common'; // <-- 1. Importar
 
 @Component({
   selector: 'app-contador-signals',
   standalone: true,
-  imports: [],
+  imports: [CommonModule], // <-- 2. Añadir aquí
   templateUrl: './contador-signals.html',
   styleUrl: './contador-signals.css'
 })

@@ -1,9 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common'; // <-- 1. Importar
 
 @Component({
   selector: 'app-contador',
   standalone: true,
-  imports: [],
+  imports: [CommonModule], // <-- 2. Añadir aquí
   templateUrl: './contador.html',
   styleUrl: './contador.css'
 })
