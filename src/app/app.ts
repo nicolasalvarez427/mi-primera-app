@@ -1,43 +1,36 @@
-import { Component, signal, computed } from '@angular/core';
-import { ContadorComponent } from './contador/contador';
-import { ContadorSignalsComponent } from './contador-signals/contador-signals';
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [ContadorComponent, ContadorSignalsComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
-export class App {
-  title = signal('¡Angular 20 con Signals!');
-  mensaje = signal('Mi primera aplicación Angular');
+export class AppComponent {
+  title = signal('Mi Aplicación Angular');
+  mensaje = signal('¡Bienvenido a Angular 20.2!');
   contador = signal(0);
-  totalClicks = signal(0);
-  
-  cambiarMensaje() {
-    const mensajeActual = this.mensaje();
-    this.mensaje.set(
-      mensajeActual === 'Mi primera aplicación Angular'
-        ? '¡Angular 20 es genial!'
-        : 'Mi primera aplicación Angular'
-    );
+  mostrarInfo = signal(false);
 
-    this.contador.update(v => v + 1);
+  cambiarMensaje() {
+    const mensajes = [
+      '¡Bienvenido a Angular 20.2!',
+      '¡Angular está evolucionando!',
+      '¡Signals son geniales!'
+    ];
+    const random = Math.floor(Math.random() * mensajes.length);
+    this.mensaje.set(mensajes[random]);
+    this.contador.set(this.contador() + 1);
   }
 
-  // Computed signal para estadísticas
-  estadisticas = computed(() => {
-    const clicks = this.totalClicks();
-    if (clicks === 0) return 'Sin interacciones';
-    if (clicks < 10) return 'Explorando...';
-    if (clicks < 25) return 'Aprendiendo...';
-    if (clicks < 50) return 'Progresando...';
-    return '¡Dominando Angular!';
-  });
-  
-  onContadorCambio(nuevoValor: number) {
-    this.totalClicks.update(v => v + 1);
-    console.log('Contador cambió a:', nuevoValor);
+  toggleInfo() {
+    this.mostrarInfo.set(!this.mostrarInfo());
+  }
+
+  reiniciar() {
+    this.mensaje.set('¡Bienvenido a Angular 20.2!');
+    this.contador.set(0);
+    this.mostrarInfo.set(false);
   }
 }
