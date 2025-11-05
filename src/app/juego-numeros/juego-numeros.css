@@ -1,89 +1,177 @@
-.container {
+/* --- Variables de Color --- */
+:host {
+  --primary-color: #dd0031;
+  --primary-hover: #c50028;
+  --secondary-color: #6c757d;
+  --secondary-hover: #5a6268;
+  --light-gray: #f8f9fa;
+  --dark-text: #333;
+  --light-text: #fff;
+  --border-color: #e0e0e0;
+  --success-color: #28a745;
+}
+
+/* --- Contenedor Principal --- */
+.game-container {
   max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--light-text);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-top: 5px solid var(--primary-color);
+}
+
+/* --- Header --- */
+.game-header {
   text-align: center;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-h1 {
-  color: #dd0031;
-  font-size: 2.5rem;
-  margin-bottom: 30px;
+.game-title {
+  color: var(--primary-color);
+  font-size: 2.25rem;
+  margin: 0;
 }
 
-.game-area {
-  background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  margin-bottom: 30px;
-  border-left: 5px solid #dd0031;
+.game-subtitle {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  margin: 0.5rem 0 0 0;
 }
 
-.numero-display {
-  font-size: 4rem;
-  font-weight: bold;
-  color: #dd0031;
-  margin: 20px 0;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-}
-
-.mensaje {
-  font-size: 1.4rem;
-  margin: 20px 0;
-  min-height: 60px;
+/* --- Tablero --- */
+.game-board {
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Panel de Estado --- */
+.status-panel {
+  display: flex;
+  justify-content: space-around;
+  background: var(--light-gray);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.status-item {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
-.btn-jugar {
-  background-color: #dd0031;
-  color: white;
-  padding: 15px 30px;
-  border: none;
-  border-radius: 30px;
+.status-label {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.status-value {
   font-size: 1.2rem;
-  cursor: pointer;
+  font-weight: bold;
+  color: var(--dark-text);
+}
+
+/* --- Display del Número --- */
+.number-display {
+  text-align: center;
+  padding: 2rem;
+  border: 2px dashed var(--border-color);
+  border-radius: 8px;
   transition: all 0.3s ease;
-  margin: 20px;
 }
 
-.btn-jugar:hover {
-  background-color: #c50028;
-  transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
-
-.intentos {
-  background-color: #f8f9fa;
-  padding: 10px 20px;
-  border-radius: 20px;
-  color: #666;
-  margin: 20px 0;
-}
-
-.btn-secondary {
-  display: inline-block;
-  background-color: #6c757d;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background-color: #5a6268;
-}
-
-/* Animación para números ganadores */
-.ganador {
+.number-display.winner {
+  border-color: var(--success-color);
+  background-color: #f0fff4;
   animation: celebrar 0.6s ease-in-out infinite alternate;
 }
 
+.number-label {
+  font-size: 1rem;
+  color: var(--secondary-color);
+}
+
+.number-value {
+  font-size: 5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  line-height: 1.1;
+  margin-top: 0.5rem;
+}
+
+.number-display.winner .number-value {
+  color: var(--success-color);
+}
+
+/* --- Panel de Mensaje --- */
+.message-panel {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--dark-text);
+  min-height: 2.5em;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: var(--light-gray);
+}
+
+.message-panel.success {
+  color: var(--success-color);
+  background: #f0fff4;
+}
+
+/* --- Controles --- */
+.game-controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* --- Estadísticas --- */
+.stats-panel {
+  border-top: 2px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+.stats-panel h3 {
+  text-align: center;
+  margin-top: 0;
+  color: var(--dark-text);
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+}
+
+.stat-item span:first-child {
+  color: var(--secondary-color);
+}
+
+.stat-item span:last-child {
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* --- Footer --- */
+.game-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  border-top: 2px solid var(--border-color);
+  padding-top: 1.5rem;
+}
+
+/* --- Animación de Ganador --- */
 @keyframes celebrar {
-  from { transform: scale(1) rotate(-2deg); }
-  to { transform: scale(1.1) rotate(2deg); }
+  from { transform: scale(1); }
+  to { transform: scale(1.02); }
 }

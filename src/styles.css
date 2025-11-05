@@ -1,1 +1,91 @@
-/* You can add global styles to this file, and also import other style files */
+/* --- Variables de Color Globales --- */
+:root {
+  --primary-color: #dd0031;
+  --primary-hover: #c50028;
+  --secondary-color: #6c757d;
+  --secondary-hover: #5a6268;
+  --light-gray: #f8f9fa;
+  --dark-text: #333;
+  --light-text: #fff;
+  --border-color: #e0e0e0;
+  --success-color: #28a745;
+}
+
+/* --- Reseteo Básico --- */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-gray);
+  color: var(--dark-text);
+}
+
+/* --- Estilos de Botones Genéricos --- */
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 30px; /* Bordes redondeados */
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn:not(:disabled):hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Botón Primario (Rojo) */
+.btn-primary {
+  color: var(--light-text);
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:not(:disabled):hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-primary:disabled {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+/* Botón Secundario (Gris) */
+.btn-secondary {
+  color: var(--light-text);
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-secondary:not(:disabled):hover {
+  background-color: var(--secondary-hover);
+  border-color: var(--secondary-hover);
+}
+
+/* Botón Outline (Borde) */
+.btn-outline {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-outline:not(:disabled):hover {
+  color: var(--light-text);
+  background-color: var(--secondary-color);
+}
